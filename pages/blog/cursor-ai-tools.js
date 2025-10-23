@@ -1,10 +1,12 @@
 import Layout from "../../hoc/Layout";
-import styles from "../../styles/Home.module.css";
 import { Container, Typography, Box, Divider } from "@mui/material";
 
 export default function BlogArticle() {
   return (
-    <Layout route="/blog/cursor-ai-tools" title="AI, Tools, and Cursor: 5x-ing Delivery (Positives + Pitfalls)">
+    <Layout
+      route="/blog/cursor-ai-tools"
+      title="Using Cursor as a Copilot: Faster Shipping, Real Limits"
+    >
       <Container
         maxWidth="md"
         sx={{
@@ -15,91 +17,87 @@ export default function BlogArticle() {
         }}
       >
         <Typography variant="h2" component="h1" gutterBottom>
-          AI, Tools, and Cursor: How We 5× Delivery at Beyond & JamCyber
+          My real-world take on AI + Cursor
         </Typography>
         <Typography variant="subtitle1" sx={{ opacity: 0.9 }} gutterBottom>
-          A pragmatic field note on using AI coding tools—what works, what breaks, and how to ship faster without losing quality.
+          I use Cursor every day. It hasn’t replaced engineering, but it has
+          absolutely changed the pace. At Beyond and JamCyber we’ve seen up to
+          5× faster delivery on the kind of work that normally soaks time:
+          refactors, glue code, and repetitive edits.
         </Typography>
 
         <Divider sx={{ my: 4, borderColor: "rgba(255,255,255,0.15)" }} />
 
-        <Section title="What Changed: From Hours to Minutes">
+        <Section title="Not autopilot—copilot">
           <p>
-            With Cursor as the primary IDE and GPT-backed workflows embedded in daily practice, we routinely see a
-            3–5× improvement in delivery speed for greenfield features and maintenance work at Beyond and JamCyber.
-            The delta comes from fewer context switches, faster scaffolding, and tighter feedback loops.
-          </p>
-          <ul>
-            <li><b>Scaffold-first</b>: generate file structures, tests, and boilerplate in seconds.</li>
-            <li><b>Inline refactors</b>: safe, surgical edits across files with traceability.</li>
-            <li><b>Working in context</b>: the model reasons over the repo, not a blank chat.</li>
-          </ul>
-        </Section>
-
-        <Section title="The Positives (When It Sings)">
-          <ul>
-            <li><b>Speed</b>: CRUD, API clients, types, and glue code land fast.</li>
-            <li><b>Consistency</b>: enforces patterns—naming, dependency boundaries, lint rules.</li>
-            <li><b>Exploration</b>: rapid spikes with throwaway branches to derisk choices.</li>
-            <li><b>Docs-as-code</b>: generate usage, ADR notes, and examples next to the code.</li>
-          </ul>
-          <p>
-            Used thoughtfully, AI becomes a <i>pair</i>—it drafts, you decide. The best outcomes come from short prompts,
-            tight acceptance criteria, and immediate in-editor verification.
+            This is the headline for me: agents are <b>not</b> ready to run
+            wild on a repo. Unmoderated, they hallucinate APIs, miss edge cases,
+            and drift across architectural boundaries. Used as a <b>copilot</b>,
+            though—where I set outcomes, review diffs, and keep it on-rails—it’s
+            a force multiplier and a very fast junior.
           </p>
         </Section>
 
-        <Section title="The Pitfalls (Where It Hurts)">
+        <Section title="What it’s genuinely great at for me">
           <ul>
-            <li><b>Hallucinated APIs</b>: libraries move; the model’s memory lags. Always import-check.</li>
-            <li><b>Shallow tests</b>: generated tests assert happy paths; expand edge cases.</li>
-            <li><b>Hidden coupling</b>: fast code can bypass architecture. Keep boundaries explicit.</li>
-            <li><b>Prompt drift</b>: long sessions degrade. Reset context and restate goals.</li>
+            <li>
+              <b>Refactoring</b>: safe, repeatable edits across files. I ask for
+              the intent, it proposes edits, and I approve line-by-line.
+            </li>
+            <li>
+              <b>Renaming</b>: types, props, functions, tests—kept in sync with
+              usage. Way fewer broken imports.
+            </li>
+            <li>
+              <b>Repetitive logic by tabbing</b>: when I start a pattern, Cursor
+              completes the next 10 variations. I just tab through and keep the
+              momentum.
+            </li>
+            <li>
+              <b>Consistent styling (within limits)</b>: enforcing a shared
+              <code>sx</code> pattern or component API so things look and feel
+              the same.
+            </li>
           </ul>
           <p>
-            The guardrail is a simple rule: if you wouldn’t merge it from a junior without review, don’t merge it from AI.
+            In its current state, these strengths—not full autonomy—are what
+            actually drive development speed.
           </p>
         </Section>
 
-        <Section title="Practices That Make It Work">
+        <Section title="Where it stumbles (and why I review everything)">
           <ul>
-            <li><b>Define outcomes</b>: task in one sentence, example input/output, acceptance checks.</li>
-            <li><b>Constrain scope</b>: ask for <i>one</i> file or function per step.</li>
-            <li><b>Codify style</b>: linters, formatters, and generators keep PRs small and consistent.</li>
-            <li><b>Review like normal</b>: diff reading, run tests, verify UX, check security.</li>
+            <li>
+              <b>Hallucinated APIs</b>: the snippet looks right but the
+              signature changed two versions ago. I always import-check.
+            </li>
+            <li>
+              <b>Architecture drift</b>: it’ll “just work” by skipping a layer.
+              I keep boundaries explicit in prompts and in code.
+            </li>
+            <li>
+              <b>Happy-path tests</b>: I extend with edge cases and failure
+              modes before shipping.
+            </li>
           </ul>
         </Section>
 
-        <Section title="Where Cursor Shines">
-          <ul>
-            <li><b>Repo-aware edits</b>: propose and apply edits across files with confidence.</li>
-            <li><b>Parallel searches</b>: jump to all usages/defs to refactor safely.</li>
-            <li><b>Scratch prompts</b>: iterate with context without polluting the codebase.</li>
-          </ul>
-        </Section>
-
-        <Section title="Real Impact at Beyond & JamCyber">
+        <Section title="How the 5× shows up at Beyond & JamCyber">
           <p>
-            On typical product work—API integrations, dashboards, email flows—we measured throughput lifts of 5× for
-            tasks heavy on integration and boilerplate, and 2–3× on complex feature work that still demands deep human
-            design. Delivery isn’t just faster; it’s more predictable.
+            The big wins land on integration-heavy work: API clients, adapters,
+            dashboards, email flows, and refactors. New ideas ship faster
+            because scaffolding is near-instant and follow-up edits are cheap.
+            For novel core logic we slow down and design first—AI helps implement
+            the seams, not the thinking.
           </p>
         </Section>
 
-        <Section title="When Not to Use It">
-          <ul>
-            <li><b>Novel core logic</b>: algorithms and domain rules that need careful proofs.</li>
-            <li><b>Security-sensitive code</b>: crypto, auth flows, and anything with legal impact.</li>
-            <li><b>Migration planning</b>: choose architecture first, then let AI fill in seams.</li>
-          </ul>
-        </Section>
-
-        <Section title="A Minimal Daily Flow">
+        <Section title="My daily flow">
           <ol>
-            <li>State the outcome and constraints.</li>
-            <li>Generate the smallest useful edit.</li>
-            <li>Run, lint, test, and read the diff.</li>
-            <li>Refine or revert quickly; keep PRs tight.</li>
+            <li>State the outcome and constraints in one sentence.</li>
+            <li>Ask for the smallest useful edit (one file/function).</li>
+            <li>Run it, read the diff, lint and test.</li>
+            <li>Iterate or revert quickly; keep PRs tight.</li>
           </ol>
         </Section>
 
@@ -109,8 +107,9 @@ export default function BlogArticle() {
           Takeaway
         </Typography>
         <Typography variant="body1" sx={{ opacity: 0.95 }}>
-          AI and Cursor don’t replace engineering—they remove drag. Treat the model like a fast, eager junior who writes
-          first drafts so you can focus on design, correctness, and the parts that matter.
+          Cursor is how I keep pace. It’s a copilot, not an autopilot—great at
+          refactors, renames, repetitive edits, and keeping styling consistent
+          enough to move fast. I stay in the loop and let it remove the drag.
         </Typography>
       </Container>
     </Layout>
